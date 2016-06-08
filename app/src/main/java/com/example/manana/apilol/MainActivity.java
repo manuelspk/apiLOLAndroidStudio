@@ -23,27 +23,36 @@ package com.example.manana.apilol;
 
 public class MainActivity extends AppCompatActivity {
 
-    String nombreInvocador;
-
     EditText emailText;
-    TextView responseView;
     ProgressBar progressBar;
+
+    private TextView lblNombre;
+    private TextView lblNivel;
+    private TextView lblIcono;
+
     static final String API_KEY = "4ab45b6d-89ca-4679-aaaa-95c75c00a6c5";
     static final String API_URL = "https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/";
+
+    Usuario usuario = new Usuario();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        responseView = (TextView) findViewById(R.id.responseView);
         emailText = (EditText) findViewById(R.id.emailText);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        lblNombre=(TextView) findViewById(R.id.lblNombre);
+        lblNivel=(TextView) findViewById(R.id.lblNivel);
+        lblIcono=(TextView) findViewById(R.id.lblIcono);
+
 
         Button queryButton = (Button) findViewById(R.id.queryButton);
         queryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                usuario.summonerName=emailText.getText().toString();
                 new RetrieveFeedTask().execute();
             }
         });
@@ -55,15 +64,15 @@ public class MainActivity extends AppCompatActivity {
 
         protected void onPreExecute() {
             progressBar.setVisibility(View.VISIBLE);
-            responseView.setText("");
+
         }
 
         protected String doInBackground(Void... urls) {
-            String email = emailText.getText().toString();
+
             // Do some validation here
 
             try {
-                URL url = new URL(API_URL + email + "?api_key=" + API_KEY);
+                URL url = new URL(API_URL + usuario.summonerName + "?api_key=" + API_KEY);
                 HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
                 try {
                     BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
@@ -91,18 +100,21 @@ public class MainActivity extends AppCompatActivity {
             }
             progressBar.setVisibility(View.GONE);
             Log.i("INFO", response);
-            responseView.setText(response);
+
             // TODO: check this.exception
             // TODO: do something with the feed
 
             try {
             JSONObject object = (JSONObject) new JSONTokener(response).nextValue();
-                String nombre = object.getJSONObject(String.valueOf(emailText.getText())).getString("name");
+                usuario.name = object.getJSONObject(String.valueOf(emailText.getText())).getString("name");
+                usuario.id=object.getJSONObject(String.valueOf((emailText.getText()))).getLong("id");
+                usuario.profileIconId=object.getJSONObject(String.valueOf((emailText.getText()))).getInt("profileIconId");
+                usuario.revisionDate=object.getJSONObject(String.valueOf((emailText.getText()))).getLong("revisionDate");
+                usuario.summonerLevel=object.getJSONObject(String.valueOf((emailText.getText()))).getLong("summonerLevel");
 
-
-                nombreInvocador=nombre;
-
-
+                lblNombre.setText(usuario.name);
+                //lblNivel.setText(usuario.summonerLevel);
+                lblIcono.setText(usuario.profileIconId);
 
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -6,6 +6,7 @@ package com.example.manana.apilol;
 public class Usuario {
 
     long id;
+    String summonerName;
     String name;
     int profileIconId;
     long revisionDate;
