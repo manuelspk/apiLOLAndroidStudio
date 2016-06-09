@@ -113,8 +113,8 @@ public class MainActivity extends AppCompatActivity {
                 usuario.summonerLevel=object.getJSONObject(String.valueOf((emailText.getText()))).getLong("summonerLevel");
 
                 lblNombre.setText(usuario.name);
-                //lblNivel.setText(usuario.summonerLevel);
-                lblIcono.setText(usuario.profileIconId);
+                lblNivel.setText(String.valueOf(usuario.summonerLevel));
+                lblIcono.setText(String.valueOf(usuario.profileIconId));
 
             } catch (JSONException e) {
                 e.printStackTrace();
