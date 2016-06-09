@@ -106,11 +106,11 @@ public class MainActivity extends AppCompatActivity {
 
             try {
             JSONObject object = (JSONObject) new JSONTokener(response).nextValue();
-                usuario.name = object.getJSONObject(String.valueOf(emailText.getText())).getString("name");
-                usuario.id=object.getJSONObject(String.valueOf((emailText.getText()))).getLong("id");
-                usuario.profileIconId=object.getJSONObject(String.valueOf((emailText.getText()))).getInt("profileIconId");
-                usuario.revisionDate=object.getJSONObject(String.valueOf((emailText.getText()))).getLong("revisionDate");
-                usuario.summonerLevel=object.getJSONObject(String.valueOf((emailText.getText()))).getLong("summonerLevel");
+                usuario.name = object.getJSONObject(String.valueOf(usuario.summonerName)).getString("name");
+                usuario.id=object.getJSONObject(String.valueOf((usuario.summonerName))).getLong("id");
+                usuario.profileIconId=object.getJSONObject(String.valueOf((usuario.summonerName))).getInt("profileIconId");
+                usuario.revisionDate=object.getJSONObject(String.valueOf((usuario.summonerName))).getLong("revisionDate");
+                usuario.summonerLevel=object.getJSONObject(String.valueOf((usuario.summonerName))).getLong("summonerLevel");
 
                 lblNombre.setText(usuario.name);
                 lblNivel.setText(String.valueOf(usuario.summonerLevel));
