@@ -3,6 +3,7 @@ package com.example.manana.apilol;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -22,6 +23,7 @@ public class Usuario extends AsyncTask<String, Void, String>{
     private TextView lblNombre;
     private TextView lblNivel;
     private TextView lblIcono;
+    private ImageView imageView;
 
     long id;
     String summonerName;
@@ -33,12 +35,13 @@ public class Usuario extends AsyncTask<String, Void, String>{
     static final String API_KEY = "4ab45b6d-89ca-4679-aaaa-95c75c00a6c5";
     static final String API_URL = "https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/";
 
-    public Usuario(TextView lblNombre, TextView lblNivel, TextView lblIcono, String Invocador)
+    public Usuario(TextView lblNombre, TextView lblNivel, TextView lblIcono, String Invocador, ImageView imageView)
     {
         this.lblNombre=lblNombre;
         this.lblNivel=lblNivel;
         this.lblIcono=lblIcono;
         this.summonerName=Invocador;
+        this.imageView=imageView;
     }
 
 
@@ -92,6 +95,9 @@ public class Usuario extends AsyncTask<String, Void, String>{
             lblNombre.setText(this.name);
             lblNivel.setText(String.valueOf(this.summonerLevel));
             lblIcono.setText(String.valueOf(this.profileIconId));
+
+            ObtenerImagen asyncTask = new ObtenerImagen(imageView);
+            asyncTask.execute("http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/"+this.profileIconId+".png");
 
         } catch (JSONException e) {
             e.printStackTrace();
