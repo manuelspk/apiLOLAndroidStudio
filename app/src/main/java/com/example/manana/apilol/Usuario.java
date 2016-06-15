@@ -1,8 +1,6 @@
 package com.example.manana.apilol;
 
 import android.os.AsyncTask;
-import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,21 +18,24 @@ import java.net.URL;
  */
 public class Usuario extends AsyncTask<String, Void, String>{
 
-    private TextView lblNombre;
+    private MainActivity ventana;
+    private TextView lblNombre;         //Campos donde vamos a pintar los datos devueltos por la API.
     private TextView lblNivel;
     private TextView lblIcono;
     private ImageView imageView;
 
-    long id;
-    String summonerName;
-    String name;
-    int profileIconId;
-    long revisionDate;
-    long summonerLevel;
+    long id;                            //Número de identificación del usuario.
+    String summonerName;                //Nombre de nuestro jugador.
+    String name;                        //Nombre de nuestro jugador (El que devuelve la API)
+    int profileIconId;                  //El número de avatar del jugador. Lo usaremos para obtener la imagen a través de los datos estáticos de la API.
+    long revisionDate;                  //Long que indica si ha habido alguna modificación en el perfil.
+    long summonerLevel;                 //Nivel del jugador
 
-    static final String API_KEY = "4ab45b6d-89ca-4679-aaaa-95c75c00a6c5";
-    static final String API_URL = "https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/";
+    static final String API_KEY = "4ab45b6d-89ca-4679-aaaa-95c75c00a6c5";                               //Mi key.
+    static final String API_URL = "https://euw.api.pvp.net/api/lol/euw/v1.4/summoner/by-name/";         //URL de la API.
 
+
+    //Contructor que le pasamos los campos de nuestro activity Main.
     public Usuario(TextView lblNombre, TextView lblNivel, TextView lblIcono, String Invocador, ImageView imageView)
     {
         this.lblNombre=lblNombre;
@@ -46,12 +47,15 @@ public class Usuario extends AsyncTask<String, Void, String>{
 
 
 
+    //Método que se ejecutará en segundo plano al hacer la llamada en MainActivity.
     @Override
     protected String doInBackground(String... params) {
         try {
-            URL url = new URL(API_URL + params[0] + "?api_key=" + API_KEY);
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            URL url = new URL(API_URL + params[0] + "?api_key=" + API_KEY);                 //Construimos la URL. Params[0] es el nombre del jugador.
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();     //Abrimos la conexión.
             try {
+                //Leemos el JSON que recibimos y lo devolvemos.
+
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
                 StringBuilder stringBuilder = new StringBuilder();
                 String line;
@@ -66,25 +70,20 @@ public class Usuario extends AsyncTask<String, Void, String>{
             }
         }
         catch(Exception e) {
-            Log.e("ERROR", e.getMessage(), e);
             return null;
         }
     }
 
 
     @Override
-
-
     protected void onPostExecute(String response) {
         if(response == null) {
-            response = "THERE WAS AN ERROR";
+            response = "HUBO UN ERROR";
         }
-        Log.i("INFO", response);
-
-        // TODO: check this.exception
-        // TODO: do something with the feed
 
         try {
+            //Leemos cada campo de nuestro JSON y lo guardamos en los atributos del objeto. Finalmente lo imprimimos en pantalla.
+
             JSONObject object = (JSONObject) new JSONTokener(response).nextValue();
             this.name = object.getJSONObject(String.valueOf(this.summonerName)).getString("name");
             this.id=object.getJSONObject(String.valueOf((this.summonerName))).getLong("id");
@@ -92,10 +91,14 @@ public class Usuario extends AsyncTask<String, Void, String>{
             this.revisionDate=object.getJSONObject(String.valueOf((this.summonerName))).getLong("revisionDate");
             this.summonerLevel=object.getJSONObject(String.valueOf((this.summonerName))).getLong("summonerLevel");
 
+            ventana.setUsuario(this);
+
             lblNombre.setText(this.name);
             lblNivel.setText(String.valueOf(this.summonerLevel));
             lblIcono.setText(String.valueOf(this.profileIconId));
 
+
+            //Llamamos a nuestra clase de obtener imágenes en un segundo hilo, usando el dato del avatar del jugador que nos ha devuelto la API.
             ObtenerImagen asyncTask = new ObtenerImagen(imageView);
             asyncTask.execute("http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/"+this.profileIconId+".png");
 
