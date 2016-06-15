@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView lblIcono;
     private ImageView avatar;                           //ImageView donde se verá el avatar del jugador.
 
-    private Usuario usuario;                            //Objeto de tipo usuario.
+    public Usuario usuario;                            //Objeto de tipo usuario.
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         Button queryButton = (Button) findViewById(R.id.queryButton);
 
 
-
         //Escuchador de nuestro botón. Al hacer click en él.
 
 
@@ -52,10 +51,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Instanciamos nuestro objeto y ejecutamos un hilo secundario (ASyncTask) donde hará la llamada a la API y obtendremos nuestro datos de ella.
+                //Ejecutamos un hilo secundario (ASyncTask) donde hará la llamada a la API y obtendremos nuestro datos de ella.
+                ObtenerDatosAPI asyncTask = new ObtenerDatosAPI(new MainActivity(),lblNombre,lblNivel,lblIcono,avatar);
+                asyncTask.execute(emailText.getText().toString());
 
-                usuario = new Usuario(lblNombre,lblNivel,lblIcono, emailText.getText().toString(), avatar);
-                usuario.execute(emailText.getText().toString());
 
 
                 //Ocultar el teclado después del click en el botón.
