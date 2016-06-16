@@ -1,15 +1,20 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.sample.foo.simplewebapi.MainActivity"
     android:weightSum="1"
-    android:background="#7c84bd">
+    android:background="#3723a6">
+
+
+    <LinearLayout
+        android:id="@+id/campoTexto"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_marginTop="100dp"
+        android:background="#786bc3">
 
     <EditText
         android:id="@+id/emailText"
@@ -19,7 +24,8 @@
         android:hint="Nombre de invocador"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#b9b6ca" />
 
     <Button
         android:id="@+id/queryButton"
@@ -33,19 +39,38 @@
         android:layout_alignEnd="@+id/emailText" />
 
 
-    <ImageView
-        android:layout_width="345dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:layout_above="@+id/lblNombre"
-        android:layout_weight="0.48"
-        android:layout_below="@+id/queryButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/lblNivel"
-        android:layout_toStartOf="@+id/lblNivel" />
+    </LinearLayout>
 
-    <TextView
+
+    <LinearLayout
+        android:id="@+id/imagen"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_marginTop="30dp"
+        android:background="#786bc3">
+
+        <ImageView
+        android:layout_width="75dp"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+            android:background="#6050b6" />
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/Labels"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_marginLeft="20dp">
+
+
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -53,33 +78,55 @@
         android:id="@+id/textView"
         android:layout_above="@+id/textView2"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+            android:textColor="#b9b6ca" />
 
-    <TextView
-        android:layout_width="64dp"
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Nivel:"
+                android:id="@+id/textView2"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#b9b6ca" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Icono:"
+                android:id="@+id/textView3"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="#b9b6ca" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Labels2"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:weightSum="1"
+        android:layout_marginLeft="15dp">
+
+        <TextView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/lblNombre"
         android:layout_gravity="center_horizontal"
         android:layout_above="@+id/lblNivel"
         android:layout_toRightOf="@+id/textView"
-        android:layout_marginLeft="41dp"
-        android:layout_marginStart="41dp"
-        android:layout_alignRight="@+id/queryButton"
-        android:layout_alignEnd="@+id/queryButton" />
+            android:layout_alignRight="@+id/queryButton"
+        android:layout_alignEnd="@+id/queryButton"
+            android:textColor="#170770" />
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Nivel:"
-            android:id="@+id/textView2"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-            android:layout_width="83dp"
+        <TextView
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/lblNivel"
@@ -88,20 +135,11 @@
         android:layout_alignStart="@+id/lblNombre"
         android:layout_alignRight="@+id/queryButton"
         android:layout_alignEnd="@+id/queryButton"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+            android:textColor="#170770" />
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Icono:"
-            android:id="@+id/textView3"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/lblIcono"
@@ -109,6 +147,11 @@
             android:layout_alignLeft="@+id/lblNivel"
             android:layout_alignStart="@+id/lblNivel"
             android:layout_alignRight="@+id/lblNombre"
-            android:layout_alignEnd="@+id/lblNombre" />
+            android:layout_alignEnd="@+id/lblNombre"
+            android:textColor="#170770" />
 
-</RelativeLayout>
+
+    </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
