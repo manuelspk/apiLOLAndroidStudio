@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Escuchador de nuestro botón. Al hacer click en él.
+        final MainActivity miVentana = this;
 
 
         queryButton.setOnClickListener(new View.OnClickListener() {
@@ -52,13 +53,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 //Ejecutamos un hilo secundario (ASyncTask) donde hará la llamada a la API y obtendremos nuestro datos de ella.
-                ObtenerDatosAPI asyncTask = new ObtenerDatosAPI(new MainActivity(),lblNombre,lblNivel,lblIcono,avatar);
+                ObtenerDatosAPI asyncTask = new ObtenerDatosAPI(miVentana, lblNombre, lblNivel, lblIcono, avatar);
                 asyncTask.execute(emailText.getText().toString());
 
 
-
                 //Ocultar el teclado después del click en el botón.
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(emailText.getWindowToken(), 0);
 
             }
