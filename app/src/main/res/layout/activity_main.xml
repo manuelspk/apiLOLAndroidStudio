@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    android:background="#3723a6">
+    android:background="#13293D">
 
 
     <LinearLayout
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:weightSum="1"
         android:layout_marginTop="100dp"
-        android:background="#786bc3">
+        android:background="#006494">
 
     <EditText
         android:id="@+id/emailText"
@@ -25,7 +25,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="#b9b6ca" />
+        android:textColor="#E8F1F2" />
 
     <Button
         android:id="@+id/queryButton"
@@ -33,10 +33,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         style="@style/Base.Widget.AppCompat.Button.Borderless"
-        android:text="Search"
+        android:text="Buscar"
         android:layout_below="@+id/emailText"
         android:layout_alignRight="@+id/emailText"
-        android:layout_alignEnd="@+id/emailText" />
+        android:layout_alignEnd="@+id/emailText"
+        android:textColor="#E8F1F2" />
 
 
     </LinearLayout>
@@ -49,13 +50,13 @@
         android:layout_height="wrap_content"
         android:weightSum="1"
         android:layout_marginTop="30dp"
-        android:background="#786bc3">
+        android:background="#006494">
 
         <ImageView
         android:layout_width="75dp"
         android:layout_height="match_parent"
         android:id="@+id/imageView"
-            android:background="#6050b6" />
+            android:background="#247BA0" />
 
 
 
@@ -79,7 +80,7 @@
         android:layout_above="@+id/textView2"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-            android:textColor="#b9b6ca" />
+            android:textColor="#E8F1F2" />
 
         <TextView
                 android:layout_width="wrap_content"
@@ -90,7 +91,7 @@
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textColor="#b9b6ca" />
+            android:textColor="#E8F1F2" />
 
         <TextView
                 android:layout_width="wrap_content"
@@ -101,7 +102,7 @@
             android:layout_below="@+id/textView2"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textColor="#b9b6ca" />
+            android:textColor="#E8F1F2" />
 
     </LinearLayout>
 
@@ -123,7 +124,7 @@
         android:layout_toRightOf="@+id/textView"
             android:layout_alignRight="@+id/queryButton"
         android:layout_alignEnd="@+id/queryButton"
-            android:textColor="#170770" />
+            android:textColor="#E8F1F2" />
 
         <TextView
             android:layout_width="fill_parent"
@@ -136,7 +137,7 @@
         android:layout_alignRight="@+id/queryButton"
         android:layout_alignEnd="@+id/queryButton"
         android:layout_gravity="center_horizontal"
-            android:textColor="#170770" />
+            android:textColor="#E8F1F2" />
 
         <TextView
             android:layout_width="fill_parent"
@@ -148,10 +149,49 @@
             android:layout_alignStart="@+id/lblNivel"
             android:layout_alignRight="@+id/lblNombre"
             android:layout_alignEnd="@+id/lblNombre"
-            android:textColor="#170770" />
+            android:textColor="#E8F1F2" />
 
 
     </LinearLayout>
+
+
+
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Botonera"
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:weightSum="1"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="40dp">
+
+
+        <Button
+            android:layout_width="157dp"
+            android:layout_height="wrap_content"
+            android:text="Últimas Partidas"
+            android:id="@+id/BtnUltimasPartidas"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.18"
+            android:background="#1B98E0"
+            android:textColor="#E8F1F2" />
+
+        <Button
+            android:layout_width="157dp"
+            android:layout_height="wrap_content"
+            android:text="Estadísticas"
+            android:id="@+id/BtnEstadisticas"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.18"
+            android:background="#1B98E0"
+            android:layout_marginTop="20dp"
+            android:textColor="#E8F1F2" />
     </LinearLayout>
 
 </LinearLayout>

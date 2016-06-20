@@ -1,6 +1,7 @@
 package com.example.manana.apilol;
 
         import android.content.Context;
+        import android.content.Intent;
         import android.os.Bundle;
         import android.support.v7.app.AppCompatActivity;
         import android.view.View;
@@ -19,8 +20,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView lblNivel;                          //Label donde imprimiremos el nivel devuelto de la API.
     private TextView lblIcono;
     private ImageView avatar;                           //ImageView donde se verá el avatar del jugador.
+    private Button btnUltimasPartidas;
+    private Button btnEstadisticas;
 
     public Usuario usuario;                            //Objeto de tipo usuario.
+
+    private static final int REQUEST_ULTIMASPARTIDAS_ACTIVITY = 1;
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
@@ -41,6 +46,13 @@ public class MainActivity extends AppCompatActivity {
         lblIcono=(TextView) findViewById(R.id.lblIcono);
         avatar=(ImageView) findViewById(R.id.imageView);
 
+        btnUltimasPartidas=(Button) findViewById(R.id.BtnUltimasPartidas);
+        btnEstadisticas=(Button) findViewById(R.id.BtnEstadisticas);
+
+        btnUltimasPartidas.setEnabled(false);                                       //Desactivo los botones para que no se pueda acceder si no se ha encontrado un usuario.
+        btnEstadisticas.setEnabled(false);
+
+
         Button queryButton = (Button) findViewById(R.id.queryButton);
 
 
@@ -53,14 +65,23 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 //Ejecutamos un hilo secundario (ASyncTask) donde hará la llamada a la API y obtendremos nuestro datos de ella.
-                ObtenerDatosAPI asyncTask = new ObtenerDatosAPI(miVentana, lblNombre, lblNivel, lblIcono, avatar);
-                asyncTask.execute(emailText.getText().toString());
+                ObtenerDatosAPI asyncTask = new ObtenerDatosAPI(miVentana, lblNombre, lblNivel, lblIcono, avatar, btnUltimasPartidas,btnEstadisticas);
+                asyncTask.execute(emailText.getText().toString().toLowerCase());
 
 
                 //Ocultar el teclado después del click en el botón.
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(emailText.getWindowToken(), 0);
 
+            }
+        });
+
+
+        btnUltimasPartidas.setOnClickListener(new View.OnClickListener(){
+            public  void onClick(View v){
+                //Lance la intencion de abrir la actividad secundaria
+                Intent intent = new Intent(MainActivity.this, UltimasPartidas.class);
+                MainActivity.this.startActivityForResult(intent, REQUEST_ULTIMASPARTIDAS_ACTIVITY);
             }
         });
     }

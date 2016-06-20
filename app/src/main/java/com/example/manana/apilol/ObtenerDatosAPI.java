@@ -3,6 +3,7 @@ package com.example.manana.apilol;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,12 +35,17 @@ public class ObtenerDatosAPI extends AsyncTask<String, Void, Bitmap> {
     private TextView lblIcono;
     private ImageView imageView;
 
-    public ObtenerDatosAPI(MainActivity ventana, TextView lblNombre, TextView lblNivel, TextView lblIcono, ImageView imageView) {
+    private Button btnUltimasPartidas;
+    private Button btnEstadisticas;
+
+    public ObtenerDatosAPI(MainActivity ventana, TextView lblNombre, TextView lblNivel, TextView lblIcono, ImageView imageView, Button btnUltimasPartidas, Button btnEstadisticas) {
         this.ventana = ventana;
         this.lblNombre = lblNombre;
         this.lblNivel = lblNivel;
         this.lblIcono = lblIcono;
         this.imageView = imageView;
+        this.btnUltimasPartidas=btnUltimasPartidas;
+        this.btnEstadisticas=btnEstadisticas;
     }
 
 
@@ -124,5 +130,8 @@ public class ObtenerDatosAPI extends AsyncTask<String, Void, Bitmap> {
         if(response != null) {
             imageView.setImageBitmap(response);
         }
+
+        btnEstadisticas.setEnabled(true);
+        btnUltimasPartidas.setEnabled(true);
     }
 }
