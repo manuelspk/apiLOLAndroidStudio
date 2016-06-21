@@ -71,11 +71,11 @@ public class ObtenerDatosAPI extends AsyncTask<String, Void, Bitmap> {
                 usuario = new Usuario();
 
                 JSONObject object = (JSONObject) new JSONTokener(stringBuilder.toString()).nextValue();
-                usuario.name = object.getJSONObject(String.valueOf(params[0])).getString("name");
-                usuario.id=object.getJSONObject(String.valueOf((params[0]))).getLong("id");
-                usuario.profileIconId=object.getJSONObject(String.valueOf((params[0]))).getInt("profileIconId");
-                usuario.revisionDate=object.getJSONObject(String.valueOf((params[0]))).getLong("revisionDate");
-                usuario.summonerLevel=object.getJSONObject(String.valueOf((params[0]))).getLong("summonerLevel");
+                usuario.setName(object.getJSONObject(String.valueOf(params[0])).getString("name"));
+                usuario.setId(object.getJSONObject(String.valueOf((params[0]))).getLong("id"));
+                usuario.setProfileIconId(object.getJSONObject(String.valueOf((params[0]))).getInt("profileIconId"));
+                usuario.setRevisionDate(object.getJSONObject(String.valueOf((params[0]))).getLong("revisionDate"));
+                usuario.setSummonerLevel(object.getJSONObject(String.valueOf((params[0]))).getLong("summonerLevel"));
 
                 ventana.setUsuario(usuario);
 
@@ -83,7 +83,7 @@ public class ObtenerDatosAPI extends AsyncTask<String, Void, Bitmap> {
 
 
 
-                URL urlAvatar = new URL("http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/"+usuario.profileIconId+".png");
+                URL urlAvatar = new URL("http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/"+usuario.getProfileIconId()+".png");
 
                 URLConnection connection = urlAvatar.openConnection();
 
@@ -123,9 +123,9 @@ public class ObtenerDatosAPI extends AsyncTask<String, Void, Bitmap> {
 
     @Override
     protected void onPostExecute(Bitmap response) {
-        lblNombre.setText(usuario.name);
-        lblNivel.setText(String.valueOf(usuario.summonerLevel));
-        lblIcono.setText(String.valueOf(usuario.profileIconId));
+        lblNombre.setText(usuario.getName());
+        lblNivel.setText(String.valueOf(usuario.getSummonerLevel()));
+        lblIcono.setText(String.valueOf(usuario.getProfileIconId()));
 
         if(response != null) {
             imageView.setImageBitmap(response);
@@ -133,5 +133,8 @@ public class ObtenerDatosAPI extends AsyncTask<String, Void, Bitmap> {
 
         btnEstadisticas.setEnabled(true);
         btnUltimasPartidas.setEnabled(true);
+
+        btnEstadisticas.setBackgroundColor(0xFF1B98E0);
+        btnUltimasPartidas.setBackgroundColor(0xFF1B98E0);
     }
 }

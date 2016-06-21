@@ -11,6 +11,8 @@ package com.example.manana.apilol;
         import android.widget.ImageView;
         import android.widget.TextView;
 
+        import java.io.Serializable;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,9 +54,10 @@ public class MainActivity extends AppCompatActivity {
         btnUltimasPartidas.setEnabled(false);                                       //Desactivo los botones para que no se pueda acceder si no se ha encontrado un usuario.
         btnEstadisticas.setEnabled(false);
 
+        btnUltimasPartidas.setBackgroundColor(0xff888888);
+        btnEstadisticas.setBackgroundColor(0xff888888);
 
         Button queryButton = (Button) findViewById(R.id.queryButton);
-
 
         //Escuchador de nuestro botón. Al hacer click en él.
         final MainActivity miVentana = this;
@@ -81,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
             public  void onClick(View v){
                 //Lance la intencion de abrir la actividad secundaria
                 Intent intent = new Intent(MainActivity.this, UltimasPartidas.class);
+                intent.putExtra("usuario",  usuario);
+
                 MainActivity.this.startActivityForResult(intent, REQUEST_ULTIMASPARTIDAS_ACTIVITY);
             }
         });
