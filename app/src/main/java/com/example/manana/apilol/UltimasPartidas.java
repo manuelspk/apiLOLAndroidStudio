@@ -4,7 +4,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import java.util.List;
+
 public class UltimasPartidas extends AppCompatActivity {
+
+
+
+    private List<Partida> listaPartidas;
+
+
+    public void setListaPartidas(List<Partida> listaPartidas) {
+        this.listaPartidas = listaPartidas;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
