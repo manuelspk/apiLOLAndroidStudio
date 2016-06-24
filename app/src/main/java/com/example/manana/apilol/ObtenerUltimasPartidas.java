@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -41,7 +42,8 @@ public class ObtenerUltimasPartidas extends AsyncTask<String, Void, Void> {
             URL url = new URL("https://euw.api.pvp.net/api/lol/euw/v1.3/game/by-summoner/"+params[0]+"/recent?api_key=4ab45b6d-89ca-4679-aaaa-95c75c00a6c5");                 //Construimos la URL. Params[0] es el id del jugador.
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();     //Abrimos la conexión.
             try {
-
+                InputStream stream = urlConnection.getInputStream();
+                //List<Partida> partidas = Arrays.asList(gson.fromJson(stream,Partida[].class))
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
                 StringBuilder stringBuilder = new StringBuilder();
                 String line;
