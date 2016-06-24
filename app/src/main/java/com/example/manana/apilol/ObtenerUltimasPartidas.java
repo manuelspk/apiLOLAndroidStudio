@@ -1,6 +1,8 @@
 package com.example.manana.apilol;
 
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -20,6 +22,14 @@ import java.util.List;
  */
 public class ObtenerUltimasPartidas extends AsyncTask<String, Void, Void> {
     private List<Partida> listaPartidas;
+    private UltimasPartidas miVentanaPartidas;
+    private ListView lvPartidas;
+
+    public ObtenerUltimasPartidas(UltimasPartidas miVentanaPartidas, ListView lvPartidas) {
+        this.miVentanaPartidas=miVentanaPartidas;
+        this.lvPartidas=lvPartidas;
+
+    }
 
     @Override
     protected Void doInBackground(String... params) {
@@ -28,7 +38,7 @@ public class ObtenerUltimasPartidas extends AsyncTask<String, Void, Void> {
 
             listaPartidas = new ArrayList<Partida>();
 
-            URL url = new URL("https://euw.api.pvp.net/api/lol/euw/v1.3/game/by-summoner/59397007/recent?api_key=4ab45b6d-89ca-4679-aaaa-95c75c00a6c5");                 //Construimos la URL. Params[0] es el nombre del jugador.
+            URL url = new URL("https://euw.api.pvp.net/api/lol/euw/v1.3/game/by-summoner/"+params[0]+"/recent?api_key=4ab45b6d-89ca-4679-aaaa-95c75c00a6c5");                 //Construimos la URL. Params[0] es el id del jugador.
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();     //Abrimos la conexión.
             try {
 
@@ -86,4 +96,18 @@ public class ObtenerUltimasPartidas extends AsyncTask<String, Void, Void> {
 
         return null;
     }
+
+
+
+
+    @Override
+    protected void onPostExecute(Void response) {
+        miVentanaPartidas.setListaPartidas(listaPartidas);
+
+        PartidasArrayAdapter adapter = new PartidasArrayAdapter(listaPartidas);
+        lvPartidas.setAdapter(adapter);
+
+    }
+
+
 }
