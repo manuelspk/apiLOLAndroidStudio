@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -51,7 +52,11 @@ public class PartidasArrayAdapter extends BaseAdapter {
             TextView tvDeaths = (TextView) oldView.findViewById(R.id.lblDeaths);
             TextView tvAssists = (TextView) oldView.findViewById(R.id.lblAssists);
 
-            PartidasViewHolder partidasViewHolder = new PartidasViewHolder(tvChampion,tvWin,partida, tvKills,tvDeaths,tvAssists);
+            ImageView imgChampion = (ImageView) oldView.findViewById(R.id.imgChampion);
+
+
+
+            PartidasViewHolder partidasViewHolder = new PartidasViewHolder(tvChampion,tvWin,partida, tvKills,tvDeaths,tvAssists,imgChampion, parent);
             oldView.setTag(partidasViewHolder);
         }else{
             ((PartidasViewHolder)oldView.getTag()).bindItem(partida);

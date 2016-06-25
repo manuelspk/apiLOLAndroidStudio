@@ -9,8 +9,6 @@ import java.io.Serializable;
 public class Usuario implements Serializable{
 
 
-
-
     private long id;                            //Número de identificación del usuario.
     private String summonerName;                //Nombre de nuestro jugador.
     private String name;                        //Nombre de nuestro jugador (El que devuelve la API)

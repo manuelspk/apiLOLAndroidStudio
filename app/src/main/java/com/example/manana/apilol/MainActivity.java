@@ -2,6 +2,7 @@ package com.example.manana.apilol;
 
         import android.content.Context;
         import android.content.Intent;
+        import android.graphics.drawable.Drawable;
         import android.os.Bundle;
         import android.support.v7.app.AppCompatActivity;
         import android.view.View;
@@ -10,8 +11,11 @@ package com.example.manana.apilol;
         import android.widget.EditText;
         import android.widget.ImageView;
         import android.widget.TextView;
+        import android.widget.Toast;
 
         import java.io.Serializable;
+        import java.util.HashMap;
+        import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -39,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
+
+
+
         //Relacionamos nuestras variables con los campos del XML.
 
         emailText = (EditText) findViewById(R.id.emailText);
@@ -61,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
 
         //Escuchador de nuestro botón. Al hacer click en él.
         final MainActivity miVentana = this;
+
+        int id = this.getResources().getIdentifier("ashe", "drawable", this.getPackageName());
+        avatar.setImageResource(id);
+
+        String mipaquete = this.getPackageName();
+        String prueba = mipaquete;
+        String prueba2 = prueba;
 
 
         queryButton.setOnClickListener(new View.OnClickListener() {

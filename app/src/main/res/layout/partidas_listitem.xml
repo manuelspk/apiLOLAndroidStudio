@@ -18,7 +18,7 @@
         <ImageView
             android:layout_width="59dp"
             android:layout_height="63dp"
-            android:id="@+id/imageView2"
+            android:id="@+id/imgChampion"
             android:background="#247BA0" />
 
         <LinearLayout
