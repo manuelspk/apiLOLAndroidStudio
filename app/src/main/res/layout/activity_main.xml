@@ -6,6 +6,14 @@
     android:weightSum="1"
     android:background="#13293D">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgBanner"
+        android:src="@drawable/banner2"
+        android:background="#13293D"
+        android:layout_marginTop="10dp" />
+
 
     <LinearLayout
         android:id="@+id/campoTexto"
@@ -13,8 +21,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
-        android:layout_marginTop="100dp"
-        android:background="#006494">
+        android:background="#006494"
+        android:layout_marginTop="10dp">
 
     <EditText
         android:id="@+id/emailText"

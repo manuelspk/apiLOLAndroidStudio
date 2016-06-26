@@ -70,13 +70,6 @@ public class MainActivity extends AppCompatActivity {
         //Escuchador de nuestro botón. Al hacer click en él.
         final MainActivity miVentana = this;
 
-        int id = this.getResources().getIdentifier("ashe", "drawable", this.getPackageName());
-        avatar.setImageResource(id);
-
-        String mipaquete = this.getPackageName();
-        String prueba = mipaquete;
-        String prueba2 = prueba;
-
 
         queryButton.setOnClickListener(new View.OnClickListener() {
             @Override

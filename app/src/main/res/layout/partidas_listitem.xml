@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/lblWin"
+        android:id="@+id/lblModo"
         android:textColor="#E8F1F2" />
 
         <TextView
@@ -55,7 +55,7 @@
         <LinearLayout
             android:id="@+id/kills"
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="85dp"
             android:layout_height="fill_parent"
             android:weightSum="1"
             android:background="#006494">
@@ -97,6 +97,26 @@
                 android:id="@+id/lblAssists"
                 android:textColor="#E8F1F2" />
 
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ganado"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:weightSum="1"
+            android:background="#006494">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:id="@+id/lblWinn"
+                android:textColor="#E8F1F2"
+                android:text="Ha ganado?"
+                android:layout_marginLeft="15dp" />
 
 
         </LinearLayout>

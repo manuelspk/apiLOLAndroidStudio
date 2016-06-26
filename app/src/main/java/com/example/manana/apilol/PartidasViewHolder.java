@@ -20,22 +20,24 @@ import java.util.Map;
  */
 public class PartidasViewHolder  {
     private TextView tvChampion;
-    private TextView tvWin;
+    private TextView tvModo;
     private TextView tvKills;
     private TextView tvDeaths;
     private TextView tvAssists;
+    private TextView tvWins;
     private ImageView imgChampion;
     private ViewGroup parent;
     private Partida item;
 
 
-    public PartidasViewHolder(TextView tvChampion, TextView tvWin, Partida item, TextView tvKills, TextView tvDeaths, TextView tvAssists, ImageView imgChampion, ViewGroup parent) {
+    public PartidasViewHolder(TextView tvChampion, TextView tvModo, Partida item, TextView tvKills, TextView tvDeaths, TextView tvAssists, ImageView imgChampion, TextView tvWins, ViewGroup parent) {
         this.tvChampion = tvChampion;
-        this.tvWin = tvWin;
+        this.tvModo = tvModo;
         this.item = item;
         this.tvKills = tvKills;
         this.tvDeaths = tvDeaths;
         this.tvAssists = tvAssists;
+        this.tvWins=tvWins;
         this.imgChampion = imgChampion;
         this.parent = parent;
 
@@ -48,7 +50,7 @@ public class PartidasViewHolder  {
 
         this.item = item;
         tvChampion.setText(miMapaPersonajes.get(item.getChampionId()));
-        tvWin.setText(item.getSubType());
+        tvModo.setText(item.getSubType());
 
         tvKills.setText(String.valueOf(item.getChampionsKilled()));
         tvDeaths.setText(String.valueOf(item.getNumDeaths()));
@@ -58,6 +60,12 @@ public class PartidasViewHolder  {
 
         int id = parent.getResources().getIdentifier(miMapaPersonajes.get(item.getChampionId()).toLowerCase(), "drawable", "com.example.manana.apilol");
         imgChampion.setImageResource(id);
+
+        if (item.isWin()==true)
+        {
+            tvWins.setText("Victoria!");
+        }else
+            tvWins.setText("Derrota");
 
         //imgChampion.setImageResource(R.drawable.ashe);
 

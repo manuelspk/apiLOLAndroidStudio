@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
@@ -68,14 +71,20 @@ public class ObtenerDatosAPI extends AsyncTask<String, Void, Bitmap> {
                 }
                 bufferedReader.close();
 
-                usuario = new Usuario();
 
                 JSONObject object = (JSONObject) new JSONTokener(stringBuilder.toString()).nextValue();
-                usuario.setName(object.getJSONObject(String.valueOf(params[0])).getString("name"));
-                usuario.setId(object.getJSONObject(String.valueOf((params[0]))).getLong("id"));
-                usuario.setProfileIconId(object.getJSONObject(String.valueOf((params[0]))).getInt("profileIconId"));
-                usuario.setRevisionDate(object.getJSONObject(String.valueOf((params[0]))).getLong("revisionDate"));
-                usuario.setSummonerLevel(object.getJSONObject(String.valueOf((params[0]))).getLong("summonerLevel"));
+                object = object.getJSONObject(String.valueOf(params[0]));
+
+                String miJson = object.toString();
+
+                Gson miGson = new Gson();
+                usuario= miGson.fromJson(miJson,Usuario.class);
+
+                //usuario.setName(object.getJSONObject(String.valueOf(params[0])).getString("name"));
+                //usuario.setId(object.getJSONObject(String.valueOf((params[0]))).getLong("id"));
+                //usuario.setProfileIconId(object.getJSONObject(String.valueOf((params[0]))).getInt("profileIconId"));
+                //usuario.setRevisionDate(object.getJSONObject(String.valueOf((params[0]))).getLong("revisionDate"));
+                //usuario.setSummonerLevel(object.getJSONObject(String.valueOf((params[0]))).getLong("summonerLevel"));
 
                 ventana.setUsuario(usuario);
 

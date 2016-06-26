@@ -46,7 +46,7 @@ public class PartidasArrayAdapter extends BaseAdapter {
             oldView=inflater.inflate(R.layout.partidas_listitem,parent,false);
 
             TextView tvChampion = (TextView) oldView.findViewById(R.id.lblChampion);
-            TextView tvWin = (TextView) oldView.findViewById(R.id.lblWin);
+            TextView tvModo = (TextView) oldView.findViewById(R.id.lblModo);
 
             TextView tvKills = (TextView) oldView.findViewById(R.id.lblKills);
             TextView tvDeaths = (TextView) oldView.findViewById(R.id.lblDeaths);
@@ -54,9 +54,10 @@ public class PartidasArrayAdapter extends BaseAdapter {
 
             ImageView imgChampion = (ImageView) oldView.findViewById(R.id.imgChampion);
 
+            TextView tvWins = (TextView) oldView.findViewById(R.id.lblWinn);
 
 
-            PartidasViewHolder partidasViewHolder = new PartidasViewHolder(tvChampion,tvWin,partida, tvKills,tvDeaths,tvAssists,imgChampion, parent);
+            PartidasViewHolder partidasViewHolder = new PartidasViewHolder(tvChampion,tvModo,partida, tvKills,tvDeaths,tvAssists,imgChampion,tvWins, parent);
             oldView.setTag(partidasViewHolder);
         }else{
             ((PartidasViewHolder)oldView.getTag()).bindItem(partida);
