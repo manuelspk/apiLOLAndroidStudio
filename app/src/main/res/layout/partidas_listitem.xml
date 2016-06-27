@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="wrap_content"
+    android:orientation="vertical" android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/customshape"
     android:weightSum="1">
 
     <LinearLayout
@@ -10,8 +11,8 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:weightSum="1"
-        android:background="#006494"
-        android:layout_weight="0.91">
+        android:background="@drawable/customshape"
+        android:layout_marginTop="10dp">
 
 
 
@@ -19,7 +20,7 @@
             android:layout_width="59dp"
             android:layout_height="63dp"
             android:id="@+id/imgChampion"
-            android:background="#247BA0" />
+            android:background="@drawable/bordesredondeados"/>
 
         <LinearLayout
             android:id="@+id/campoTextos"
@@ -27,7 +28,7 @@
             android:layout_width="140dp"
             android:layout_height="fill_parent"
             android:weightSum="1"
-            android:background="#006494">
+            >
 
         <TextView
         android:layout_width="wrap_content"
@@ -58,7 +59,7 @@
             android:layout_width="85dp"
             android:layout_height="fill_parent"
             android:weightSum="1"
-            android:background="#006494">
+            >
 
             <TextView
                 android:layout_width="wrap_content"
@@ -107,7 +108,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:weightSum="1"
-            android:background="#006494">
+           >
 
             <TextView
                 android:layout_width="wrap_content"

@@ -21,7 +21,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
-        android:background="#006494"
+        android:background="@drawable/bordesredondeados"
         android:layout_marginTop="10dp">
 
     <EditText
@@ -58,13 +58,13 @@
         android:layout_height="wrap_content"
         android:weightSum="1"
         android:layout_marginTop="30dp"
-        android:background="#006494">
+        android:background="@drawable/bordesredondeados">
 
         <ImageView
         android:layout_width="75dp"
         android:layout_height="match_parent"
         android:id="@+id/imageView"
-            android:background="#247BA0" />
+            android:background="@drawable/bordesredondeados" />
 
 
 
@@ -187,7 +187,7 @@
             android:id="@+id/BtnUltimasPartidas"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.18"
-            android:background="#1B98E0"
+            android:background="@drawable/customshape"
             android:textColor="#E8F1F2" />
 
         <Button
@@ -197,7 +197,7 @@
             android:id="@+id/BtnEstadisticas"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.18"
-            android:background="#1B98E0"
+            android:background="@drawable/customshape"
             android:layout_marginTop="20dp"
             android:textColor="#E8F1F2" />
     </LinearLayout>

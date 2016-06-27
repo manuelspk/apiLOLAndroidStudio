@@ -145,5 +145,8 @@ public class ObtenerDatosAPI extends AsyncTask<String, Void, Bitmap> {
 
         btnEstadisticas.setBackgroundColor(0xFF1B98E0);
         btnUltimasPartidas.setBackgroundColor(0xFF1B98E0);
+
+        btnEstadisticas.setBackgroundResource(R.drawable.bordesredondeados);
+        btnUltimasPartidas.setBackgroundResource(R.drawable.bordesredondeados);
     }
 }
