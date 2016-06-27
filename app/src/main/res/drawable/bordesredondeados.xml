@@ -7,9 +7,11 @@
         android:bottom="6dp" />
     <gradient
         android:angle="270"
+
+
         android:startColor="#13293D"
         android:endColor="#13293D"
-        android:centerColor="#247BA0"
+        android:centerColor="#375167"
         />
     <corners android:radius="5dp"
         android:topLeftRadius="5dp"

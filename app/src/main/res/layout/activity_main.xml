@@ -11,8 +11,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/imgBanner"
         android:src="@drawable/banner2"
-        android:background="#13293D"
-        android:layout_marginTop="10dp" />
+        android:background="@drawable/bordesredondeados"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/fotobanner" />
 
 
     <LinearLayout
@@ -64,7 +65,7 @@
         android:layout_width="75dp"
         android:layout_height="match_parent"
         android:id="@+id/imageView"
-            android:background="@drawable/bordesredondeados" />
+            android:background="@drawable/customshape" />
 
 
 
@@ -172,34 +173,39 @@
 
     <LinearLayout
         android:id="@+id/Botonera"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="131dp"
         android:weightSum="1"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="40dp">
 
 
         <Button
-            android:layout_width="157dp"
-            android:layout_height="wrap_content"
+            android:layout_width="156dp"
+            android:layout_height="100dp"
             android:text="Últimas Partidas"
             android:id="@+id/BtnUltimasPartidas"
             android:layout_gravity="center_horizontal"
             android:layout_weight="0.18"
-            android:background="@drawable/customshape"
-            android:textColor="#E8F1F2" />
+            android:background="@drawable/botones"
+            android:textColor="#E8F1F2"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp" />
 
         <Button
-            android:layout_width="157dp"
-            android:layout_height="wrap_content"
+            android:layout_width="156dp"
+            android:layout_height="100dp"
             android:text="Estadísticas"
             android:id="@+id/BtnEstadisticas"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="0.18"
-            android:background="@drawable/customshape"
+            android:background="@drawable/botones"
+            android:textColor="#E8F1F2"
             android:layout_marginTop="20dp"
-            android:textColor="#E8F1F2" />
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp" />
     </LinearLayout>
 
 </LinearLayout>

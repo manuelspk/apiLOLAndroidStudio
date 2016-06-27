@@ -1,8 +1,12 @@
 package com.example.manana.apilol;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -33,6 +37,17 @@ public class UltimasPartidas extends AppCompatActivity {
         ObtenerUltimasPartidas asyncTask = new ObtenerUltimasPartidas(miVentanaPartidas, lvPartidas);
         asyncTask.execute(String.valueOf(usuario.getId()));
 
+
+        lvPartidas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(UltimasPartidas.this, VisorPartida.class);
+
+                intent.putExtra("POSICION", position);
+                startActivity(intent);
+
+            }
+        });
 
 
     }
