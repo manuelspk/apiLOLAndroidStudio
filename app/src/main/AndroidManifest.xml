@@ -17,8 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UltimasPartidas"></activity>
-        <activity android:name=".VisorPartida"></activity>
+        <activity android:name=".UltimasPartidas" />
+        <activity android:name=".VisorPartida" />
+        <activity android:name=".EstadisticasActivity"></activity>
     </application>
 
 </manifest>

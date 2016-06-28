@@ -10,11 +10,21 @@
     android:background="#13293D"
     android:orientation="vertical">
 
-
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="ULTIMAS PARTIDAS"
+        android:textColor="#E8F1F2"
+        android:textAlignment="center"
+        android:textStyle="normal|bold"
+        android:textSize="20dp"
+        android:background="@drawable/customshape"/>
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/lvPartidas"
-        android:background="#006494" />
+        android:background="#006494"
+        android:layout_marginTop="20dp" />
 </LinearLayout>

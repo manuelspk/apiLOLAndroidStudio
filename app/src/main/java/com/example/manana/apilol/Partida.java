@@ -36,6 +36,16 @@ public class Partida implements Serializable{
  //   private int assist;                 //asistencias
 
 
+
+    public long getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(long createDate) {
+        this.createDate = createDate;
+    }
+
+
     public long getGameId() {
         return gameId;
     }

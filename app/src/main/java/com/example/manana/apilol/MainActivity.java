@@ -97,6 +97,17 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivityForResult(intent, REQUEST_ULTIMASPARTIDAS_ACTIVITY);
             }
         });
+
+
+        btnEstadisticas.setOnClickListener(new View.OnClickListener(){
+            public  void onClick(View v){
+                //Lance la intencion de abrir la actividad secundaria
+                Intent intent = new Intent(MainActivity.this, EstadisticasActivity.class);
+                intent.putExtra("usuario",  usuario);
+
+                MainActivity.this.startActivityForResult(intent, REQUEST_ULTIMASPARTIDAS_ACTIVITY);
+            }
+        });
     }
 
 
