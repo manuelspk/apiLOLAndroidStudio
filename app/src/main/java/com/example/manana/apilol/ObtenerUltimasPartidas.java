@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,6 +18,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -54,38 +57,13 @@ public class ObtenerUltimasPartidas extends AsyncTask<String, Void, Void> {
 
 
                 JSONObject jObject = (JSONObject) new JSONTokener(stringBuilder.toString()).nextValue();
-                long aJsonLong = jObject.getLong("summonerId");
-
                 JSONArray partidas = jObject.getJSONArray("games");
 
-                for (int i=0; i < partidas.length(); i++) {
-                    try {
-                        Partida partida = new Partida();
+                String miJson = partidas.toString();
 
-                        JSONObject objetoJson = partidas.getJSONObject(i);
-                        // Pulling items from the array
-                        partida.setGameType(objetoJson.getString("gameType"));
-                        partida.setGameMode(objetoJson.getString("gameMode"));
-                        partida.setSubType(objetoJson.getString("subType"));
-                        partida.setChampionId(objetoJson.getInt("championId"));
-                        partida.setSpell1(objetoJson.getInt("spell1"));
-                        partida.setSpell2(objetoJson.getInt("spell2"));
-                        partida.setCreateDate(objetoJson.getLong("createDate"));
+                Gson gson = new Gson();
+                listaPartidas = Arrays.asList(gson.fromJson(miJson, Partida[].class));
 
-                        JSONObject objetoJsonArray = objetoJson.getJSONObject("stats");
-
-                        partida.setWin(objetoJsonArray.getBoolean("win"));
-                        partida.setChampionsKilled(objetoJsonArray.getInt("championsKilled"));
-                        partida.setNumDeaths(objetoJsonArray.getInt("numDeaths"));
-                        partida.setAssist(objetoJsonArray.getInt("assists"));
-
-                        listaPartidas.add(partida);
-
-
-                    } catch (JSONException e) {
-                        // Oops
-                    }
-                }
 
             }
             finally{

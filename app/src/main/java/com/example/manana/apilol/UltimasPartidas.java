@@ -44,6 +44,7 @@ public class UltimasPartidas extends AppCompatActivity {
                 Intent intent = new Intent(UltimasPartidas.this, VisorPartida.class);
 
                 intent.putExtra("POSICION", position);
+                intent.putExtra("PARTIDA",  listaPartidas.get(position));
                 startActivity(intent);
 
             }

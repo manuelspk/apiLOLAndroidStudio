@@ -18,8 +18,10 @@ public class VisorPartida extends AppCompatActivity {
         prueba=(TextView)findViewById(R.id.textPrueba);
 
         Intent intent = getIntent();
-        int temp = intent.getIntExtra("POSICION",0);
+        int temp = intent.getIntExtra("POSICION", 0);
+        Partida partida = new Partida();
+        partida = (Partida) getIntent().getSerializableExtra("PARTIDA");
 
-        prueba.setText(String.valueOf(temp));
+        prueba.setText(String.valueOf(partida.getChampionId()));
     }
 }

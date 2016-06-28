@@ -2,6 +2,7 @@ package com.example.manana.apilol;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
@@ -52,21 +53,23 @@ public class PartidasViewHolder  {
         tvChampion.setText(miMapaPersonajes.get(item.getChampionId()));
         tvModo.setText(item.getSubType());
 
-        tvKills.setText(String.valueOf(item.getChampionsKilled()));
-        tvDeaths.setText(String.valueOf(item.getNumDeaths()));
-        tvAssists.setText(String.valueOf(item.getAssist()));
+        tvKills.setText(String.valueOf(item.getStats().getChampionsKilled()));
+        tvDeaths.setText(String.valueOf(item.getStats().getNumDeaths()));
+        tvAssists.setText(String.valueOf(item.getStats().getAssists()));
 
 
 
         int id = parent.getResources().getIdentifier(miMapaPersonajes.get(item.getChampionId()).toLowerCase(), "drawable", "com.example.manana.apilol");
         imgChampion.setImageResource(id);
 
-        if (item.isWin()==true)
+        if (item.getStats().isWin()==true)
         {
             tvWins.setText("Victoria!");
-        }else
+            tvWins.setBackgroundColor(Color.parseColor("#294739"));
+        }else {
             tvWins.setText("Derrota");
-
+            tvWins.setBackgroundColor(Color.parseColor("#4A0F0C"));
+        }
         //imgChampion.setImageResource(R.drawable.ashe);
 
     }

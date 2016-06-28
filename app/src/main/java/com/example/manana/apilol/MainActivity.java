@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
         btnUltimasPartidas.setEnabled(false);                                       //Desactivo los botones para que no se pueda acceder si no se ha encontrado un usuario.
         btnEstadisticas.setEnabled(false);
 
-        btnUltimasPartidas.setBackgroundColor(0xff888888);
-        btnEstadisticas.setBackgroundColor(0xff888888);
+        btnEstadisticas.setBackgroundResource(R.drawable.botonesdesactivados);
+        btnUltimasPartidas.setBackgroundResource(R.drawable.botonesdesactivados);
 
         Button queryButton = (Button) findViewById(R.id.queryButton);
 

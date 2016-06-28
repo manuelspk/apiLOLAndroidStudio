@@ -132,21 +132,21 @@ public class ObtenerDatosAPI extends AsyncTask<String, Void, Bitmap> {
 
     @Override
     protected void onPostExecute(Bitmap response) {
-        lblNombre.setText(usuario.getName());
-        lblNivel.setText(String.valueOf(usuario.getSummonerLevel()));
-        lblIcono.setText(String.valueOf(usuario.getProfileIconId()));
-
         if(response != null) {
+            lblNombre.setText(usuario.getName());
+            lblNivel.setText(String.valueOf(usuario.getSummonerLevel()));
+            lblIcono.setText(String.valueOf(usuario.getProfileIconId()));
+
+
             imageView.setImageBitmap(response);
+
+
+            btnEstadisticas.setEnabled(true);
+            btnUltimasPartidas.setEnabled(true);
+
+
+            btnEstadisticas.setBackgroundResource(R.drawable.botones);
+            btnUltimasPartidas.setBackgroundResource(R.drawable.botones);
         }
-
-        btnEstadisticas.setEnabled(true);
-        btnUltimasPartidas.setEnabled(true);
-
-        btnEstadisticas.setBackgroundColor(0xFF1B98E0);
-        btnUltimasPartidas.setBackgroundColor(0xFF1B98E0);
-
-        btnEstadisticas.setBackgroundResource(R.drawable.botones);
-        btnUltimasPartidas.setBackgroundResource(R.drawable.botones);
     }
 }
