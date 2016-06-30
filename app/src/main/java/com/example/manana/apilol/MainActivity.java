@@ -35,16 +35,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
+    }       //Para crear nuestro objeto usuario desde la tarea asíncrona.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-
 
 
         //Relacionamos nuestras variables con los campos del XML.
@@ -90,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnUltimasPartidas.setOnClickListener(new View.OnClickListener(){
             public  void onClick(View v){
-                //Lance la intencion de abrir la actividad secundaria
+                //Lance la intencion de abrir la actividad secundaria. Le mandamos nuestro objeto usuario con los datos recibidos.
                 Intent intent = new Intent(MainActivity.this, UltimasPartidas.class);
                 intent.putExtra("usuario",  usuario);
 
@@ -101,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnEstadisticas.setOnClickListener(new View.OnClickListener(){
             public  void onClick(View v){
-                //Lance la intencion de abrir la actividad secundaria
+                //Lance la intencion de abrir la actividad secundaria. Le mandamos nuestro objeto usuario con los datos recibidos.
                 Intent intent = new Intent(MainActivity.this, EstadisticasActivity.class);
                 intent.putExtra("usuario",  usuario);
 

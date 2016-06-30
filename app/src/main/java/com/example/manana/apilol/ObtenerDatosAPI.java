@@ -91,6 +91,7 @@ public class ObtenerDatosAPI extends AsyncTask<String, Void, Bitmap> {
 
 
 
+                //Proceso de descargar el avatar del usuario.
 
                 URL urlAvatar = new URL("http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/"+usuario.getProfileIconId()+".png");
 
@@ -132,6 +133,9 @@ public class ObtenerDatosAPI extends AsyncTask<String, Void, Bitmap> {
 
     @Override
     protected void onPostExecute(Bitmap response) {
+
+        //Si ha existido respuesta, ponemos cada valor en su campo.
+
         if(response != null) {
             lblNombre.setText(usuario.getName());
             lblNivel.setText(String.valueOf(usuario.getSummonerLevel()));

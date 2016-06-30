@@ -67,7 +67,7 @@
             android:id="@+id/datosPartida"
             android:orientation="horizontal"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:weightSum="1"
             android:layout_marginTop="30dp">
 
@@ -75,7 +75,7 @@
                 android:id="@+id/datosPartida2"
                 android:orientation="vertical"
                 android:layout_width="168dp"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:weightSum="1"
                 android:layout_marginTop="30dp">
 
@@ -248,7 +248,7 @@
                 android:id="@+id/resultadosPartida2"
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:weightSum="1"
                 android:layout_marginTop="30dp">
 

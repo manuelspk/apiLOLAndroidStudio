@@ -84,6 +84,8 @@ public class ObtenerUltimasPartidas extends AsyncTask<String, Void, Void> {
     protected void onPostExecute(Void response) {
         miVentanaPartidas.setListaPartidas(listaPartidas);
 
+        //Una vez obtenidos los datos de la API, creamos nuestro adaptador para mostrar los datos.
+
         PartidasArrayAdapter adapter = new PartidasArrayAdapter(listaPartidas);
         lvPartidas.setAdapter(adapter);
 

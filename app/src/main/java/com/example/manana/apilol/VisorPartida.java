@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,11 +56,16 @@ public class VisorPartida extends AppCompatActivity {
         Map<Integer, String> miMapaPersonajes = new HashMap<Integer, String>();
         miMapaPersonajes = new DatosEstaticos().devolverMapaPersonajes(miMapaPersonajes);
 
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.format(new Date(partida.getCreateDate()));
+
+
         int id = getResources().getIdentifier(miMapaPersonajes.get(partida.getChampionId()).toLowerCase(), "drawable", "com.example.manana.apilol");
         imgChampion.setImageResource(id);
 
         lblChampion.setText(miMapaPersonajes.get(partida.getChampionId()));
-        lblFecha.setText(String.valueOf(partida.getCreateDate()));
+        lblFecha.setText(String.valueOf(String.valueOf(sdf.format(new Date(partida.getCreateDate())))));
         lblModo.setText(String.valueOf(partida.getGameMode()));
         lblTipo.setText(String.valueOf(partida.getGameType()));
 

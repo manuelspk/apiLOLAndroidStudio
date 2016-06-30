@@ -56,6 +56,8 @@ public class ObtenerEstadisticas extends AsyncTask<String, Void, Bitmap> {
                 bufferedReader.close();
 
 
+
+
                 JSONObject jObject = (JSONObject) new JSONTokener(stringBuilder.toString()).nextValue();
                 JSONArray partidas = jObject.getJSONArray("playerStatSummaries");
 
@@ -65,7 +67,7 @@ public class ObtenerEstadisticas extends AsyncTask<String, Void, Bitmap> {
                 listaEstadistica = Arrays.asList(gson.fromJson(miJson, Estadisticas[].class));
 
 
-
+                //Obtenemos avatar del usuario.
 
 
                 URL urlAvatar = new URL("http://ddragon.leagueoflegends.com/cdn/6.12.1/img/profileicon/"+params[1]+".png");
@@ -112,6 +114,8 @@ public class ObtenerEstadisticas extends AsyncTask<String, Void, Bitmap> {
 
     @Override
     protected void onPostExecute(Bitmap response) {
+        if(response != null) {
+
         miVentana.setListaEstadisticas(listaEstadistica);
 
         Estadisticas miEstadistica = new Estadisticas();
@@ -133,7 +137,7 @@ public class ObtenerEstadisticas extends AsyncTask<String, Void, Bitmap> {
         miVentana.lblWins.setText(String.valueOf(miEstadistica.getWins()));
 
 
-        if(response != null) {
+
             miVentana.imagen.setImageBitmap(response);
         }
     }
